@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagCommander", "src\FlagCommander\FlagCommander.csproj", "{8460674D-D078-4619-8BE5-E0A69D26E9BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagCommander.Persistence", "src\FlagCommander.Persistence\FlagCommander.Persistence.csproj", "{F1A24669-9203-4D11-98C0-33E8E6C38A5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE5B1913-997C-4D81-AC26-764649F81A0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagCommander.Persistence.Test", "tests\FlagCommander.Persistence.Test\FlagCommander.Persistence.Test.csproj", "{6C699E2F-6B3E-4D02-9A90-48317B06F7EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8460674D-D078-4619-8BE5-E0A69D26E9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8460674D-D078-4619-8BE5-E0A69D26E9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8460674D-D078-4619-8BE5-E0A69D26E9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8460674D-D078-4619-8BE5-E0A69D26E9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A24669-9203-4D11-98C0-33E8E6C38A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A24669-9203-4D11-98C0-33E8E6C38A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A24669-9203-4D11-98C0-33E8E6C38A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A24669-9203-4D11-98C0-33E8E6C38A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C699E2F-6B3E-4D02-9A90-48317B06F7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C699E2F-6B3E-4D02-9A90-48317B06F7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C699E2F-6B3E-4D02-9A90-48317B06F7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C699E2F-6B3E-4D02-9A90-48317B06F7EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C699E2F-6B3E-4D02-9A90-48317B06F7EA} = {CE5B1913-997C-4D81-AC26-764649F81A0E}
+	EndGlobalSection
+EndGlobal
