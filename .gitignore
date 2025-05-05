@@ -57,6 +57,7 @@ nunit-*.xml
 .vscode/
 .idea/
 .git/
+*.DotSettings.user
 
 # macOS
 .DS_Store

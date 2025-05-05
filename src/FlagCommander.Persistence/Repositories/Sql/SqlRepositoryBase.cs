@@ -25,10 +25,10 @@ public abstract class SqlRepositoryBase : IRepository
         await using var command = connection.CreateCommand();
         command.CommandText = @"
 CREATE TABLE IF NOT EXISTS __flag_commander_flags 
-(name VARCHAR PRIMARY KEY, percentage_of_time INTEGER DEFAULT 100, percentage_of_actors INTEGER DEFAULT 100, enabled INTEGER DEFAULT 1);
+(name VARCHAR(255) PRIMARY KEY, percentage_of_time INTEGER DEFAULT 100, percentage_of_actors INTEGER DEFAULT 100, enabled INTEGER DEFAULT 1);
 
-CREATE TABLE IF NOT EXISTS __flag_commanders_actors 
-(flag_name TEXT, actor_id TEXT, PRIMARY KEY (flag_name, actor_id), FOREIGN KEY (flag_name) REFERENCES __flag_commander_flags(name) ON DELETE CASCADE);
+CREATE TABLE IF NOT EXISTS __flag_commander_actors 
+(flag_name VARCHAR(255), actor_id VARCHAR(255), PRIMARY KEY (flag_name, actor_id), FOREIGN KEY (flag_name) REFERENCES __flag_commander_flags(name) ON DELETE CASCADE);
         ";
         await command.ExecuteNonQueryAsync();
     }
@@ -68,7 +68,7 @@ select name, percentage_of_time, percentage_of_actors from __flag_commander_flag
             return null;
 
         command.CommandText = @"
-select actor_id from __flag_commanders_actors where flag_name = @name
+select actor_id from __flag_commander_actors where flag_name = @name
         ";
         
         var actorIds = new List<string>();
@@ -121,17 +121,91 @@ insert into __flag_commander_flags (name) values (@name);
 
     public virtual async Task SetPercentageOfTimeAsync(string featureName, int percentage)
     {
-        throw new NotImplementedException();
+        await using var connection = DbConnection;
+        await connection.OpenAsync();
+        await using var command = connection.CreateCommand();
+        command.Transaction = await connection.BeginTransactionAsync();
+        
+        var nameParam = command.CreateParameter();
+        nameParam.ParameterName = "@name";
+        nameParam.DbType = System.Data.DbType.String;
+        nameParam.Value = featureName;
+        command.Parameters.Add(nameParam);
+        
+        var percentageParam = command.CreateParameter();
+        percentageParam.ParameterName = "@percentage";
+        percentageParam.DbType = System.Data.DbType.Int32;
+        percentageParam.Value = percentage;
+        command.Parameters.Add(percentageParam);
+        
+        command.CommandText = @"
+update __flag_commander_flags set percentage_of_time = @percentage where name = @name;
+        ";
+        
+        await command.ExecuteNonQueryAsync();
+        await command.Transaction.CommitAsync();
     }
 
     public virtual async Task SetPercentageOfActorsAsync(string featureName, int percentage)
     {
-        throw new NotImplementedException();
+        await using var connection = DbConnection;
+        await connection.OpenAsync();
+        await using var command = connection.CreateCommand();
+        command.Transaction = await connection.BeginTransactionAsync();
+        
+        var nameParam = command.CreateParameter();
+        nameParam.ParameterName = "@name";
+        nameParam.DbType = System.Data.DbType.String;
+        nameParam.Value = featureName;
+        command.Parameters.Add(nameParam);
+        
+        var percentageParam = command.CreateParameter();
+        percentageParam.ParameterName = "@percentage";
+        percentageParam.DbType = System.Data.DbType.Int32;
+        percentageParam.Value = percentage;
+        command.Parameters.Add(percentageParam);
+        
+        command.CommandText = @"
+update __flag_commander_flags set percentage_of_actors = @percentage where name = @name;
+        ";
+        
+        await command.ExecuteNonQueryAsync();
+        await command.Transaction.CommitAsync();
     }
 
     public virtual async Task AddActorAsync(string featureName, string actorId)
     {
-        throw new NotImplementedException();
+        await using var connection = DbConnection;
+        await connection.OpenAsync();
+        await using var command = connection.CreateCommand();
+        command.Transaction = await connection.BeginTransactionAsync();
+        
+        var nameParam = command.CreateParameter();
+        nameParam.ParameterName = "@name";
+        nameParam.DbType = System.Data.DbType.String;
+        nameParam.Value = featureName;
+        command.Parameters.Add(nameParam);
+        
+        var actorParam = command.CreateParameter();
+        actorParam.ParameterName = "@actor";
+        actorParam.DbType = System.Data.DbType.String;
+        actorParam.Value = actorId;
+        command.Parameters.Add(actorParam);
+        
+        command.CommandText = @"
+select count(*) from __flag_commander_actors where flag_name = @name and actor_id = @actor;
+        ";
+        
+        var count = await command.ExecuteScalarAsync();
+        if (count?.ToString() != null && int.Parse(count.ToString() ?? "0") == 0)
+        {
+            command.CommandText = @"
+insert into __flag_commander_actors (flag_name, actor_id) values (@name, @actor);
+        ";
+        }
+
+        await command.ExecuteNonQueryAsync();
+        await command.Transaction.CommitAsync();
     }
 
     public virtual async Task DisableAsync(string featureName)
@@ -191,7 +265,7 @@ delete from __flag_commander_flags where name = @name;
         var actorParam = command.CreateParameter();
         actorParam.ParameterName = "@actor";
         actorParam.DbType = System.Data.DbType.String;
-        actorParam.Value = featureName;
+        actorParam.Value = actorId;
         command.Parameters.Add(actorParam);
         
         command.CommandText = @"
