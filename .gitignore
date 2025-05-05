@@ -53,5 +53,10 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
+# Editors
+.vscode/
+.idea/
+.git/
+
 # macOS
 .DS_Store

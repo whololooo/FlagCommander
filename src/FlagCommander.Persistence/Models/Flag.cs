@@ -2,8 +2,8 @@ namespace FlagCommander.Persistence.Models;
 
 public class Flag
 {
-    public string Name { get; set; }
-    public int PercentageOfTime { get; set; }
-    public int PercentageOfActors { get; set; }
-    public List<string> ActorIds { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public int PercentageOfTime { get; set; } = 100;
+    public int PercentageOfActors { get; set; } = 100;
+    public List<string> ActorIds { get; set; } = [];
 }
