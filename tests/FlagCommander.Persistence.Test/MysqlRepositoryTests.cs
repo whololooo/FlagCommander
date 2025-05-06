@@ -6,8 +6,8 @@ namespace FlagCommander.Persistence.Test;
 public class MysqlRepositoryTests : SqlRepositoryBaseTests, IAsyncLifetime
 {
     private const string DbName = "testdb";
-    private const string UserName = "postgres";
-    private const string Password = "postgres";
+    private const string UserName = "mysql";
+    private const string Password = "mysql";
     
     private readonly MySqlContainer _mysql = new MySqlBuilder()
         .WithImage("mysql:latest")

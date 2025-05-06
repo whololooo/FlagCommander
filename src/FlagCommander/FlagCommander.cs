@@ -91,7 +91,7 @@ public class FlagCommander(IRepository repository) : IFlagCommander
 
     private bool AllowedByPercentage(int percentage)
     {
-        var randomValue = new Random().NextDouble();
+        var randomValue = Random.Shared.NextDouble();
         return randomValue * 100 < percentage;
     }
 }
