@@ -2,7 +2,7 @@ using FlagCommander.Persistence;
 
 namespace FlagCommander;
 
-public class FlagManager(IRepository repository) : IFlagManager
+public class FlagCommander(IRepository repository) : IFlagCommander
 {
     public async Task<bool> IsEnabledAsync(string featureName)
     {

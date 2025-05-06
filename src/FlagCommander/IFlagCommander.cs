@@ -1,6 +1,6 @@
 namespace FlagCommander;
 
-public interface IFlagManager
+public interface IFlagCommander
 {
     /// <summary>
     /// Checks whether the feature is enabled
