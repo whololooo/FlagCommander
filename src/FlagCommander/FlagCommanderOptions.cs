@@ -24,7 +24,7 @@ public class FlagCommanderOptions : IOptions<FlagCommanderOptions>
     
     public FlagCommanderOptions UseMssql(string connectionString)
     {
-        Repository = new Persistence.Repositories.Sql.MsSqlRepository(connectionString);
+        Repository = new Persistence.Repositories.Sql.MssqlRepository(connectionString);
         return this;
     }
     

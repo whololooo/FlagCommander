@@ -8,30 +8,15 @@ public abstract class SqlRepositoryBase : IRepository
     protected string ConnectionString { get; }
     protected abstract DbConnection DbConnection { get; }
 
-    protected SqlRepositoryBase(string connectionString, bool callInit = true)
+    protected SqlRepositoryBase(string connectionString)
     {
         ConnectionString = connectionString;
-        if (callInit)
-        {
-            var initTask = Init();
-            Task.Run(() => initTask).GetAwaiter().GetResult();
-        }
+        var initTask = Init();
+        Task.Run(() => initTask).GetAwaiter().GetResult();
+        
     }
 
-    protected async Task Init()
-    {
-        await using var connection = DbConnection;
-        await connection.OpenAsync();
-        await using var command = connection.CreateCommand();
-        command.CommandText = @"
-CREATE TABLE IF NOT EXISTS __flag_commander_flags 
-(name VARCHAR(255) PRIMARY KEY, percentage_of_time INTEGER DEFAULT 100, percentage_of_actors INTEGER DEFAULT 100, enabled INTEGER DEFAULT 1);
-
-CREATE TABLE IF NOT EXISTS __flag_commander_actors 
-(flag_name VARCHAR(255), actor_id VARCHAR(255), PRIMARY KEY (flag_name, actor_id), FOREIGN KEY (flag_name) REFERENCES __flag_commander_flags(name) ON DELETE CASCADE);
-        ";
-        await command.ExecuteNonQueryAsync();
-    }
+    protected abstract Task Init();
 
     public virtual async Task<Flag?> GetAsync(string featureName)
     {

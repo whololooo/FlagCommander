@@ -12,7 +12,7 @@ public class MssqlRepositoryTests : SqlRepositoryBaseTests, IAsyncLifetime
     public async Task InitializeAsync()
     {
         await _mssql.StartAsync();
-        Repository = new MsSqlRepository(_mssql.GetConnectionString());
+        Repository = new MssqlRepository(_mssql.GetConnectionString());
     }
 
     public Task DisposeAsync()
