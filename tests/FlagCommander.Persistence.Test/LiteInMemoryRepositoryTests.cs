@@ -2,7 +2,7 @@ using FlagCommander.Persistence.Repositories.Sql;
 
 namespace FlagCommander.Persistence.Test;
 
-public class SqlLiteInMemoryRepositoryTests : SqlRepositoryBaseTests, IAsyncDisposable
+public class SqlLiteInMemoryRepositoryTests : RepositoryBaseTests, IAsyncDisposable
 {
     public SqlLiteInMemoryRepositoryTests()
     {

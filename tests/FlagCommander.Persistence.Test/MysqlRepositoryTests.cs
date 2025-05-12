@@ -3,7 +3,7 @@ using Testcontainers.MySql;
 
 namespace FlagCommander.Persistence.Test;
 
-public class MysqlRepositoryTests : SqlRepositoryBaseTests, IAsyncLifetime
+public class MysqlRepositoryTests : RepositoryBaseTests, IAsyncLifetime
 {
     private const string DbName = "testdb";
     private const string UserName = "mysql";

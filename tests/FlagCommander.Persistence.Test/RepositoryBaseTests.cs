@@ -3,9 +3,9 @@ using FlagCommander.Persistence.Repositories.Sql;
 namespace FlagCommander.Persistence.Test;
 
 
-public abstract class SqlRepositoryBaseTests
+public abstract class RepositoryBaseTests
 {
-    protected SqlRepositoryBase? Repository;
+    protected IRepository? Repository;
     
     [Fact]
     public async Task GetAsync_ReturnsNull_WhenFeatureDoesNotExist()

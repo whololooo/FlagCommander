@@ -6,4 +6,5 @@ public class Flag
     public int PercentageOfTime { get; set; } = 100;
     public int PercentageOfActors { get; set; } = 100;
     public List<string> ActorIds { get; set; } = [];
+    public bool IsEnabled { get; set; } = true;
 }
