@@ -3,7 +3,7 @@ using Testcontainers.MsSql;
 
 namespace FlagCommander.Persistence.Test;
 
-public class MssqlRepositoryTests : RepositoryBaseTests, IAsyncLifetime
+public class MssqlRepositoryTests : SqlRepositoryBaseTests, IAsyncLifetime
 {
     private readonly MsSqlContainer _mssql = new MsSqlBuilder()
         .WithImage("mcr.microsoft.com/mssql/server:2022-latest")

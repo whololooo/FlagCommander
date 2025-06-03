@@ -1,7 +1,4 @@
-using FlagCommander.Persistence.Repositories.Sql;
-
 namespace FlagCommander.Persistence.Test;
-
 
 public abstract class RepositoryBaseTests
 {

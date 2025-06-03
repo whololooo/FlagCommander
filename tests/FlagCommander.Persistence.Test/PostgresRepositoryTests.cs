@@ -3,7 +3,7 @@ using Testcontainers.PostgreSql;
 
 namespace FlagCommander.Persistence.Test;
 
-public class PostgresRepositoryTests : RepositoryBaseTests, IAsyncLifetime
+public class PostgresRepositoryTests : SqlRepositoryBaseTests, IAsyncLifetime
 {
     private const string DbName = "testdb";
     private const string UserName = "postgres";

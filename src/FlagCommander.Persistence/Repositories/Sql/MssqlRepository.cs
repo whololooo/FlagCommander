@@ -52,7 +52,7 @@ END
 
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = '__flag_commander_actors_flag_name_and_actor_id_index' AND object_id = OBJECT_ID('__flag_commander_actors'))
 BEGIN
-    CREATE INDEX __flag_commander_actors_flag_name_and_actor_id_index ON __flag_commander_flags (name, enabled);
+    CREATE INDEX __flag_commander_actors_flag_name_and_actor_id_index ON __flag_commander_actors (flag_name, actor_id);
 END
 ";
         await command.ExecuteNonQueryAsync();
