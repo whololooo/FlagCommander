@@ -1,5 +1,8 @@
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace FlagCommander.Persistence.Models;
 
+[BsonIgnoreExtraElements]
 public class Flag
 {
     public string Name { get; set; } = string.Empty;

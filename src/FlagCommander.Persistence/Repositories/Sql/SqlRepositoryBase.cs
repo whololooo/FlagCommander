@@ -3,20 +3,13 @@ using FlagCommander.Persistence.Models;
 
 namespace FlagCommander.Persistence.Repositories.Sql;
 
-public abstract class SqlRepositoryBase : IRepository
+public abstract class SqlRepositoryBase : RepositoryBase, IRepository
 {
-    protected string ConnectionString { get; }
     protected abstract DbConnection DbConnection { get; }
 
-    protected SqlRepositoryBase(string connectionString)
+    protected SqlRepositoryBase(string connectionString) : base(connectionString)
     {
-        ConnectionString = connectionString;
-        var initTask = Init();
-        Task.Run(() => initTask).GetAwaiter().GetResult();
-        
     }
-
-    protected abstract Task Init();
 
     public virtual async Task<Flag?> GetAsync(string featureName)
     {

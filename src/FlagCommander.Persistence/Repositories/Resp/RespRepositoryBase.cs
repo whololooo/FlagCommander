@@ -3,15 +3,12 @@ using StackExchange.Redis;
 
 namespace FlagCommander.Persistence.Repositories.Resp;
 
-public abstract class RespRepositoryBase : IRepository
+public abstract class RespRepositoryBase : RepositoryBase, IRepository
 {
     protected Task<ConnectionMultiplexer> Connection => ConnectionMultiplexer.ConnectAsync(ConnectionString);
     
-    protected string ConnectionString { get; }
-    
-    protected RespRepositoryBase(string connectionString)
+    protected RespRepositoryBase(string connectionString) : base(connectionString)
     {
-        ConnectionString = connectionString;
     }
     
     protected async Task<IDatabase> GetDatabaseAsync()

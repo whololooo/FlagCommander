@@ -1,8 +1,23 @@
+using System.Reflection;
+
 namespace FlagCommander.Persistence.Test;
 
 public abstract class RepositoryBaseTests
 {
     protected IRepository? Repository;
+    
+    [Fact]
+    public async Task Startup_InitializesRepository_Twice()
+    {
+        // Arrange
+        var initMethodTask = Repository!.GetType().GetTypeInfo().GetDeclaredMethod("Init")!.Invoke(Repository, null);
+
+        // Act
+        await (Task)initMethodTask!;
+
+        // Assert
+        Assert.NotNull(Repository);
+    }
     
     [Fact]
     public async Task GetAsync_ReturnsNull_WhenFeatureDoesNotExist()
