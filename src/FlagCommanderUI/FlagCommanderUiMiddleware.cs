@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 
-namespace FlagCommander.UI;
+namespace FlagCommanderUI;
 
 public class FlagCommanderUiMiddleware
 {

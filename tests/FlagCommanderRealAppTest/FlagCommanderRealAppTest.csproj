@@ -7,11 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\FlagCommander.UI\FlagCommander.UI.csproj" />
+<!--      <ProjectReference Include="..\..\src\FlagCommanderUINet6\FlagCommanderUINet6.csproj" />-->
+      <ProjectReference Include="..\..\src\FlagCommanderUI\FlagCommanderUI.csproj" />
       <ProjectReference Include="..\..\src\FlagCommander\FlagCommander.csproj" />
     </ItemGroup>
 

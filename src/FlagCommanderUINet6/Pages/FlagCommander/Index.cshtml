@@ -1,0 +1,14 @@
+﻿@page
+@using FlagCommanderUINet6.Components
+@model FlagCommanderUINet6.Pages.FlagCommander.Index
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout= "_Layout";
+}
+
+<div>
+    <h1>Flag Commander UI</h1>
+    
+    <component type="typeof(ControlCenter)" render-mode="ServerPrerendered" />
+</div>

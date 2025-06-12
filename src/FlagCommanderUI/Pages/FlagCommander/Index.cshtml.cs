@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FlagCommander.UI.Pages.FlagCommander;
+namespace FlagCommanderUI.Pages.FlagCommander;
 
 public class Index : PageModel
 {
