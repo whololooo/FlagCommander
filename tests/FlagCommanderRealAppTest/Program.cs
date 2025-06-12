@@ -1,4 +1,5 @@
 using FlagCommander;
+using FlagCommander.UI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddFlagCommander(options =>
 {
     options.UseInMemoryRepository();
 });
+builder.Services.AddFlagCommanderUi();
 
 var app = builder.Build();
 
@@ -19,6 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseFlagManagerUI(new FlagCommanderUiOptions());
 
 
 app.MapGet("/flag-setup", async (IFlagCommander flagCommander) =>

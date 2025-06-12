@@ -1,0 +1,16 @@
+﻿@page
+@model FlagCommander.UI.Pages.FlagCommander.Index
+@using FlagCommander.UI.Components
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout= "_Layout";
+}
+
+<div>
+    <h1>Flag Commander UI</h1>
+    <p>Welcome to the Flag Commander User Interface!</p>
+    <p>This is a placeholder page. The actual UI will be developed soon.</p>
+    
+    <component type="typeof(ControlCenter)" render-mode="ServerPrerendered" />
+</div>

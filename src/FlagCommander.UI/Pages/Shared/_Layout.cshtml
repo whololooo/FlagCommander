@@ -1,0 +1,23 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <base href="~/" />
+    <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)" render-mode="ServerPrerendered" />
+    <title>FlagCommander UI</title>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/5.2.3/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container body-content">
+    @RenderBody()
+</div>
+
+@section Scripts {
+    <script src="_framework/blazor.server.js"></script>
+}
+
+@(await RenderSectionAsync("Scripts", required: false))
+</body>
+</html>

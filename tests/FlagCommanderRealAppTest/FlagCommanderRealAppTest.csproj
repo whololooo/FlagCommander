@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\FlagCommander.UI\FlagCommander.UI.csproj" />
       <ProjectReference Include="..\..\src\FlagCommander\FlagCommander.csproj" />
     </ItemGroup>
 

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFrameworks>net9.0;net8.0;net6.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyVersion>0.0.1</AssemblyVersion>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.3.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Routing" />
+        <PackageReference Include="Microsoft.AspNetCore.StaticFiles" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="index.html" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FlagCommander\FlagCommander.csproj" />
+    </ItemGroup>
+
+</Project>
