@@ -62,6 +62,50 @@ select actor_id from __flag_commander_actors where flag_name = @name
         return flag;
     }
 
+    public async Task<List<Flag>> GetFlagsAsync()
+    {
+        await using var connection = DbConnection;
+        await connection.OpenAsync();
+        await using var command = connection.CreateCommand();
+        
+        command.CommandText = @"
+select name, percentage_of_time, percentage_of_actors, enabled from __flag_commander_flags;
+        ";
+
+        var flagsDic = new Dictionary<string, Flag>();
+        await using var reader = await command.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            var flag = new Flag
+            {
+                Name = reader.GetString(0),
+                PercentageOfTime = reader.GetInt32(1),
+                PercentageOfActors = reader.GetInt32(2),
+                IsEnabled = reader.GetBoolean(3)
+            };
+            flagsDic.Add(flag.Name, flag);
+        }
+
+        await reader.CloseAsync();
+
+        command.CommandText = @"
+select flag_name, actor_id from __flag_commander_actors
+        ";
+        
+        var actorIds = new List<string>();
+        await using var actorReader = await command.ExecuteReaderAsync();
+
+        while (await actorReader.ReadAsync())
+        {
+            var flagName = actorReader.GetString(0);
+            if (!flagsDic.TryGetValue(flagName, out var flag))
+                continue;
+            flag.ActorIds.Add(actorReader.GetString(1));
+        }
+
+        return flagsDic.Values.ToList();
+    }
+
     public virtual async Task EnableAsync(string featureName)
     {
         await using var connection = DbConnection;

@@ -46,6 +46,12 @@ public class MongoDbRepository : NoSqlRepositoryBase, IRepository
         return result;
     }
 
+    public async Task<List<Flag>> GetFlagsAsync()
+    {
+        var result = await (await flagsCollection.FindAsync(_ => true)).ToListAsync();
+        return result ?? [];
+    }
+
     public async Task EnableAsync(string featureName)
     {
         var filter = Builders<Flag>.Filter.Eq(f => f.Name, featureName);

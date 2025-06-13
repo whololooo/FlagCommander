@@ -41,6 +41,33 @@ public abstract class RepositoryBaseTests
         // Assert
         Assert.NotNull(result);
     }
+    
+    [Fact]
+    public async Task GetFlagsAsync_ReturnsEmptyList_WhenNoFeaturesExist()
+    {
+        // Act
+        var result = await Repository!.GetFlagsAsync();
+
+        // Assert
+        Assert.Empty(result);
+    }
+
+    [Fact]
+    public async Task GetFlagsAsync_ReturnsListOfFlags_WhenAtLeastOneFlagExists()
+    {
+        // Arrange
+        await Repository!.EnableAsync("Feature1");
+        await Repository.EnableAsync("Feature2");
+        
+        // Act
+        var result = await Repository!.GetFlagsAsync();
+        
+        // Assert
+        Assert.NotEmpty(result);
+        Assert.Contains(result, f => f.Name == "Feature1");
+        Assert.Contains(result, f => f.Name == "Feature2");
+        Assert.Equal(2, result.Count);
+    }
 
     [Fact]
     public async Task SetPercentageOfTime_ReturnsFeatureWithNewPercentageValue_WhenFeatureExists()
