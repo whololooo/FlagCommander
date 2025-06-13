@@ -81,7 +81,7 @@ select name, percentage_of_time, percentage_of_actors, enabled from __flag_comma
                 Name = reader.GetString(0),
                 PercentageOfTime = reader.GetInt32(1),
                 PercentageOfActors = reader.GetInt32(2),
-                IsEnabled = reader.GetBoolean(3)
+                IsEnabled = reader.GetInt32(3) == 1
             };
             flagsDic.Add(flag.Name, flag);
         }
