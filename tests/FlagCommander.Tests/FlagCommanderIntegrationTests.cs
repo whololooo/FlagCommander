@@ -21,7 +21,7 @@ namespace FlagCommander.Tests
 
             // Enable the feature with 100% to ensure consistent results
             await _flagManager.EnableAsync("TestFeature");
-            await _flagManager.EnableAsyncPercentageOfTime("TestFeature", 100);
+            await _flagManager.EnablePercentageOfTimeAsync("TestFeature", 100);
             
             // Check if enabled
             isEnabled = await _flagManager.IsEnabledAsync("TestFeature");
@@ -43,7 +43,7 @@ namespace FlagCommander.Tests
 
             // Enable for actor1 only
             await _flagManager.EnableAsync("ActorFeature", actor1, a => a.Id);
-            await _flagManager.EnableAsyncPercentageOfActors("ActorFeature", 100);
+            await _flagManager.EnablePercentageOfActorsAsync("ActorFeature", 100);
             
             // Should be enabled for actor1, disabled for actor2
             var isEnabledForActor1 = await _flagManager.IsEnabledAsync("ActorFeature", actor1, a => a.Id);
@@ -89,14 +89,14 @@ namespace FlagCommander.Tests
         {
             // Create feature with 0% chance
             await _flagManager.EnableAsync("ZeroPercentFeature");
-            await _flagManager.EnableAsyncPercentageOfTime("ZeroPercentFeature", 0);
+            await _flagManager.EnablePercentageOfTimeAsync("ZeroPercentFeature", 0);
             
             // Should always be disabled at 0%
             var isEnabled = await _flagManager.IsEnabledAsync("ZeroPercentFeature");
             Assert.False(isEnabled);
             
             // Set to 100% chance
-            await _flagManager.EnableAsyncPercentageOfTime("ZeroPercentFeature", 100);
+            await _flagManager.EnablePercentageOfTimeAsync("ZeroPercentFeature", 100);
             
             // Should always be enabled at 100%
             isEnabled = await _flagManager.IsEnabledAsync("ZeroPercentFeature");
@@ -113,12 +113,12 @@ namespace FlagCommander.Tests
             await _flagManager.EnableAsync("ActorPercentFeature", actor, a => a.Id);
             
             // Set to 100%
-            await _flagManager.EnableAsyncPercentageOfActors("ActorPercentFeature", 100);
+            await _flagManager.EnablePercentageOfActorsAsync("ActorPercentFeature", 100);
             var isEnabled = await _flagManager.IsEnabledAsync("ActorPercentFeature", actor, a => a.Id);
             Assert.True(isEnabled);
             
             // Set to 0%
-            await _flagManager.EnableAsyncPercentageOfActors("ActorPercentFeature", 0);
+            await _flagManager.EnablePercentageOfActorsAsync("ActorPercentFeature", 0);
             isEnabled = await _flagManager.IsEnabledAsync("ActorPercentFeature", actor, a => a.Id);
             Assert.False(isEnabled);
         }
@@ -129,8 +129,8 @@ namespace FlagCommander.Tests
             // Enable two separate features with different settings
             await _flagManager.EnableAsync("Feature1");
             await _flagManager.EnableAsync("Feature2");
-            await _flagManager.EnableAsyncPercentageOfTime("Feature1", 100);
-            await _flagManager.EnableAsyncPercentageOfTime("Feature2", 0);
+            await _flagManager.EnablePercentageOfTimeAsync("Feature1", 100);
+            await _flagManager.EnablePercentageOfTimeAsync("Feature2", 0);
             
             // Feature1 should be enabled, Feature2 disabled
             Assert.True(await _flagManager.IsEnabledAsync("Feature1"));
@@ -141,7 +141,7 @@ namespace FlagCommander.Tests
         public async Task PercentageOfTime75Percent()
         {
             await _flagManager.EnableAsync("Feature1");
-            await _flagManager.EnableAsyncPercentageOfTime("Feature1", 75);
+            await _flagManager.EnablePercentageOfTimeAsync("Feature1", 75);
 
             var results = new List<bool>();
             for (var i = 0; i < 1000; i++)
@@ -158,7 +158,7 @@ namespace FlagCommander.Tests
         public async Task PercentageOfTime22Percent()
         {
             await _flagManager.EnableAsync("Feature1");
-            await _flagManager.EnableAsyncPercentageOfTime("Feature1", 22);
+            await _flagManager.EnablePercentageOfTimeAsync("Feature1", 22);
 
             var results = new List<bool>();
             for (var i = 0; i < 1000; i++)
@@ -175,7 +175,7 @@ namespace FlagCommander.Tests
         public async Task PercentageOfActors75Percent()
         {
             await _flagManager.EnableAsync("Feature1");
-            await _flagManager.EnableAsyncPercentageOfActors("Feature1", 75);
+            await _flagManager.EnablePercentageOfActorsAsync("Feature1", 75);
 
             
             for (var i = 0; i < 1000; i++)
@@ -200,7 +200,7 @@ namespace FlagCommander.Tests
         public async Task PercentageOfActors31Percent()
         {
             await _flagManager.EnableAsync("Feature1");
-            await _flagManager.EnableAsyncPercentageOfActors("Feature1", 31);
+            await _flagManager.EnablePercentageOfActorsAsync("Feature1", 31);
 
             
             for (var i = 0; i < 1000; i++)

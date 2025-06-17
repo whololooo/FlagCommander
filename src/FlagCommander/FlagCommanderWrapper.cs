@@ -1,10 +1,12 @@
+using FlagCommander.Persistence.Models;
 using Microsoft.Extensions.Options;
 
 namespace FlagCommander;
 
-public class FlagCommanderWrapper : IFlagCommander
+public class FlagCommanderWrapper : IFlagCommander, IFlagCommanderManagement
 {
     private readonly IFlagCommander _flagCommander;
+    private readonly IFlagCommanderManagement _flagCommanderManagement;
     
     public FlagCommanderWrapper(IOptions<FlagCommanderOptions> options)
     {
@@ -14,6 +16,7 @@ public class FlagCommanderWrapper : IFlagCommander
         }
         
         _flagCommander = new FlagCommander(options.Value.Repository);
+        _flagCommanderManagement = (_flagCommander as IFlagCommanderManagement)!;
     }
 
     public Task<bool> IsEnabledAsync(string featureName)
@@ -41,14 +44,14 @@ public class FlagCommanderWrapper : IFlagCommander
         return _flagCommander.EnableAsync(featureName, actor, actorIdPredicate);
     }
 
-    public Task EnableAsyncPercentageOfTime(string featureName, int percentage)
+    public Task EnablePercentageOfTimeAsync(string featureName, int percentage)
     {
-        return _flagCommander.EnableAsyncPercentageOfTime(featureName, percentage);
+        return _flagCommander.EnablePercentageOfTimeAsync(featureName, percentage);
     }
 
-    public Task EnableAsyncPercentageOfActors(string featureName, int percentage)
+    public Task EnablePercentageOfActorsAsync(string featureName, int percentage)
     {
-        return _flagCommander.EnableAsyncPercentageOfActors(featureName, percentage);
+        return _flagCommander.EnablePercentageOfActorsAsync(featureName, percentage);
     }
 
     public Task DisableAsync(string featureName)
@@ -59,5 +62,20 @@ public class FlagCommanderWrapper : IFlagCommander
     public Task DisableAsync<TActor>(string featureName, TActor actor, Func<TActor, string> actorIdPredicate)
     {
         return _flagCommander.DisableAsync(featureName, actor, actorIdPredicate);
+    }
+
+    public Task<List<Flag>> GetFlagsAsync()
+    {
+        return _flagCommanderManagement.GetFlagsAsync();
+    }
+
+    public Task<Flag?> GetAsync(string name)
+    {
+        return _flagCommanderManagement.GetAsync(name);
+    }
+
+    public Task DeleteFlagAsync(string name)
+    {
+        return _flagCommanderManagement.DeleteFlagAsync(name);
     }
 }

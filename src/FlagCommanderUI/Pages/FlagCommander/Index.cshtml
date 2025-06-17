@@ -1,14 +1,15 @@
 ﻿@page
-@model FlagCommanderUI.Pages.FlagCommander.Index
 @using FlagCommanderUI.Components
+@model FlagCommanderUI.Pages.FlagCommander.Index
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout= "_Layout";
 }
 
-<div>
-    <h1>Flag Commander UI</h1>
-    
-    <component type="typeof(ControlCenter)" render-mode="ServerPrerendered" />
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center my-4">
+        <h1>Flag Commander Control Center</h1>
+    </div>
+    <component type="typeof(ControlCenter)" render-mode="ServerPrerendered"/>
 </div>

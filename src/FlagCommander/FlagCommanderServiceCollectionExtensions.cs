@@ -22,6 +22,7 @@ public static class FlagCommanderServiceCollectionExtensions
 
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IFlagCommander, FlagCommanderWrapper>());
+        services.TryAdd(ServiceDescriptor.Singleton<IFlagCommanderManagement, FlagCommanderWrapper>());
         return services;
     }
 }

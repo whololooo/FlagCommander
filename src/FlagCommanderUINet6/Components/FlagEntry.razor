@@ -1,0 +1,108 @@
+<div class="border rounded p-2 my-2">
+    <div class="d-flex align-items-center my-1">
+        <div class="col-2 d-flex">
+            @if (isEditing)
+            {
+                <button @onclick="Save" class="btn btn-success me-1" disabled="@isBusy">
+                    @if (isBusy)
+                    {
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Saving...</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <i class="bi bi-check2"></i>
+                    }
+                </button>
+
+                <button @onclick="StopEdit" class="btn btn-danger ms-1" disabled="@isBusy">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            }
+            else
+            {
+                <button @onclick="StartEdit" class="btn btn-warning">
+                    <i class="bi bi-pencil"></i>
+                </button>
+            }
+        </div>
+
+        <div class="col mx-1">
+            @if (isEditing && string.IsNullOrWhiteSpace(Flag.Name))
+            {
+                <label for="flagNameInput">Feature name</label>
+                <input id="flagNameInput" type="text" class="form-control" @bind="@editModeName"/>
+            }
+            else
+            {
+                <strong>@Flag.Name</strong>
+            }
+        </div>
+
+        <div class="col mx-1">
+            @if (isEditing)
+            {
+                <input id="flagStateCheckbox" type="checkbox" class="form-check-input" @bind="@editModeIsEnabled"/>
+                <label for="flagStateCheckbox" class="form-check-label">Enabled</label>
+            }
+            else
+            {
+                <span class="badge @(Flag.IsEnabled ? "bg-success" : "bg-warning")">@(Flag.IsEnabled ? "Active" : "Disabled")</span>
+            }
+        </div>
+
+        <div class="col mx-1">
+            @if (isEditing)
+            {
+                <label for="percOfTime">Percentage of time</label>
+                <input id="percOfTime" type="number" min="0" max="100" class="form-control" @bind="@editModePercentageOfTime"/>
+            }
+            else
+            {
+                <label for="percOfTime">Percentage of time</label>
+                <span id="percOfTime" class="badge bg-secondary">@(Flag.PercentageOfTime) %</span>
+            }
+        </div>
+
+        <div class="col mx-1">
+            @if (isEditing)
+            {
+                <label for="percOfActors">Percentage of actors</label>
+                <input id="percOfActors" type="number" min="0" max="100" class="form-control" @bind="@editModePercentageOfActors"/>
+            }
+            else
+            {
+                <label for="percOfActors">Percentage of actors</label>
+                <span id="percOfActors" class="badge bg-secondary">@(Flag.PercentageOfActors) %</span>
+            }
+        </div>
+    </div>
+
+    @if (isEditing)
+    {
+        <div class="d-flex align-items-center my-1">
+            <div class="input-group col">
+                <span class="input-group-text" id="actorsLabel">Actor IDs</span>
+                <input type="text" class="form-control" placeholder="Actor IDs, comma separated"
+                       aria-label="Actor IDs, comma separated" aria-describedby="actorsLabel"
+                       @bind="@EditModeActorIdsString">
+            </div>
+        </div>
+        
+        <div class="d-flex">
+            <button class="btn btn-outline-danger" @onclick="Delete">
+                @if (isBusy)
+                {
+                    <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Deleting...</span>
+                    </div>
+                }
+                else
+                {
+                    <span>Delete</span>
+                }
+            </button>
+        </div>
+    }
+</div>

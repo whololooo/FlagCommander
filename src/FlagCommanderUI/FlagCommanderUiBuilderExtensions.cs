@@ -1,6 +1,5 @@
 ﻿using FlagCommanderUI;
 using FlagCommanderUI.Components;
-using Microsoft.Extensions.FileProviders;
 
 namespace Microsoft.AspNetCore.Builder;
 

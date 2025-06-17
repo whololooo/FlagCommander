@@ -1,12 +1,18 @@
-﻿<h3>FlagCommanderControlCenter</h3>
-<div class="d-flex">
-    <span>@StatusText</span>
-    @if (flagEnabled)
+﻿<div class="">
+    @if (!string.IsNullOrWhiteSpace(statusMessage))
     {
-        <button class="btn btn-primary" @onclick="ToggleFlag">Disable</button>
+        <div class="alert @(statusMessageTypeClass) alert-dismissible fade show" role="alert">
+            <div class="container">
+                <span>@statusMessage</span>
+                <progress max="@HideDelay" value="@progress" class="w-100"></progress>
+            </div>
+        </div>
     }
-    else
+
+    <button @onclick="AddNewEntry" class="btn btn-primary my-2"><i class="bi bi-plus-circle"></i></button>
+
+    @foreach (var flag in flags)
     {
-        <button class="btn btn-primary" @onclick="async() => await ToggleFlag()" >Enable</button>
+        <FlagEntry Flag="@flag" OnUpdated="RowUpdated" OnDeleted="RowDeleted" OnDeletedUnsaved="UnsavedRowDeleted"/>
     }
 </div>

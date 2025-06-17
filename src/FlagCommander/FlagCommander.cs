@@ -1,8 +1,9 @@
 using FlagCommander.Persistence;
+using FlagCommander.Persistence.Models;
 
 namespace FlagCommander;
 
-public class FlagCommander(IRepository repository) : IFlagCommander
+public class FlagCommander(IRepository repository) : IFlagCommander, IFlagCommanderManagement
 {
     public async Task<bool> IsEnabledAsync(string featureName)
     {
@@ -46,7 +47,7 @@ public class FlagCommander(IRepository repository) : IFlagCommander
         await repository.AddActorAsync(featureName, actorId);
     }
 
-    public async Task EnableAsyncPercentageOfTime(string featureName, int percentage)
+    public async Task EnablePercentageOfTimeAsync(string featureName, int percentage)
     {
         if (percentage is < 0 or > 100)
             throw new ArgumentOutOfRangeException(nameof(percentage), "Percentage must be between 0 and 100");
@@ -60,7 +61,7 @@ public class FlagCommander(IRepository repository) : IFlagCommander
         await repository.SetPercentageOfTimeAsync(featureName, percentage);
     }
 
-    public async Task EnableAsyncPercentageOfActors(string featureName, int percentage)
+    public async Task EnablePercentageOfActorsAsync(string featureName, int percentage)
     {
         if (percentage is < 0 or > 100)
             throw new ArgumentOutOfRangeException(nameof(percentage), "Percentage must be between 0 and 100");
@@ -93,5 +94,20 @@ public class FlagCommander(IRepository repository) : IFlagCommander
     {
         var randomValue = Random.Shared.NextDouble();
         return randomValue * 100 < percentage;
+    }
+
+    public async Task<List<Flag>> GetFlagsAsync()
+    {
+        return await repository.GetFlagsAsync(); 
+    }
+
+    public async Task<Flag?> GetAsync(string name)
+    {
+        return await repository.GetAsync(name);
+    }
+
+    public async Task DeleteFlagAsync(string name)
+    {
+        await repository.DeleteAsync(name);
     }
 }

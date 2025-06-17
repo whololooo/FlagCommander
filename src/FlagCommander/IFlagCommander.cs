@@ -49,14 +49,14 @@ public interface IFlagCommander
     /// </summary>
     /// <param name="featureName">Feature name</param>
     /// <param name="percentage">The percentage of time that the feature is enabled</param>
-    Task EnableAsyncPercentageOfTime(string featureName, int percentage);
+    Task EnablePercentageOfTimeAsync(string featureName, int percentage);
     
     /// <summary>
     /// Enables the feature for percentage of actors
     /// </summary>
     /// <param name="featureName">Feature name</param>
     /// <param name="percentage">The percentage of actors that the feature is enabled for</param>
-    Task EnableAsyncPercentageOfActors(string featureName, int percentage);
+    Task EnablePercentageOfActorsAsync(string featureName, int percentage);
     
     /// <summary>
     /// Disables the feature for everyone

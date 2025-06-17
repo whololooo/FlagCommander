@@ -174,9 +174,9 @@ namespace FlagCommander.Tests
         {
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
-                flagCommander.EnableAsyncPercentageOfTime("Feature", 101));
+                flagCommander.EnablePercentageOfTimeAsync("Feature", 101));
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
-                flagCommander.EnableAsyncPercentageOfTime("Feature", -1));
+                flagCommander.EnablePercentageOfTimeAsync("Feature", -1));
         }
 
         [Fact]
@@ -187,7 +187,7 @@ namespace FlagCommander.Tests
                 .ReturnsAsync(new Flag());
 
             // Act
-            await flagCommander.EnableAsyncPercentageOfTime("ExistingFeature", 50);
+            await flagCommander.EnablePercentageOfTimeAsync("ExistingFeature", 50);
 
             // Assert
             _mockRepository.Verify(r => r.SetPercentageOfTimeAsync("ExistingFeature", 50), Times.Once);
@@ -198,9 +198,9 @@ namespace FlagCommander.Tests
         {
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
-                flagCommander.EnableAsyncPercentageOfActors("Feature", 101));
+                flagCommander.EnablePercentageOfActorsAsync("Feature", 101));
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
-                flagCommander.EnableAsyncPercentageOfActors("Feature", -1));
+                flagCommander.EnablePercentageOfActorsAsync("Feature", -1));
         }
 
         [Fact]
@@ -211,7 +211,7 @@ namespace FlagCommander.Tests
                 .ReturnsAsync(new Flag());
 
             // Act
-            await flagCommander.EnableAsyncPercentageOfActors("ExistingFeature", 50);
+            await flagCommander.EnablePercentageOfActorsAsync("ExistingFeature", 50);
 
             // Assert
             _mockRepository.Verify(r => r.SetPercentageOfActorsAsync("ExistingFeature", 50), Times.Once);
