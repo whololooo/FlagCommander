@@ -1,5 +1,4 @@
 using FlagCommander;
-using FlagCommanderUI;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +12,7 @@ builder.Services.AddFlagCommanderUi();
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-app.UseFlagManagerUI(new FlagCommanderUiOptions());
+app.UseFlagCommanderUI();
 
 
 app.MapGet("/flag-setup", async (IFlagCommander flagCommander) =>
