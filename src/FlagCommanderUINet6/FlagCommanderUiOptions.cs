@@ -6,13 +6,25 @@ public class FlagCommanderUiOptions : IOptions<FlagCommanderUiOptions>
 {
     public FlagCommanderUiOptions Value => this;
     
+    internal string RoutePrefix { get; set; } = "flag-commander";
+
+    internal bool RequireAuthorization { get; set; } = false;
+    
     /// <summary>
     /// Gets or sets a route prefix for accessing the FlagCommander UI.
     /// </summary>
-    public string RoutePrefix { get; set; } = "flag-commander";
+    public FlagCommanderUiOptions WithRoutePrefix(string routePrefix)
+    {
+        RoutePrefix = routePrefix;
+        return this;
+    }
     
     /// <summary>
     /// Gets or sets the requirement of authorization in order to access FlagCommander UI.
     /// </summary>
-    public bool RequireAuthorization { get; set; } = false;
+    public FlagCommanderUiOptions WithAuthorizationRequired()
+    {
+        RequireAuthorization = true;
+        return this;
+    }
 }

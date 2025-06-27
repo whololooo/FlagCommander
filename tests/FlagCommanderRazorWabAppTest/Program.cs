@@ -46,9 +46,11 @@ app.MapStaticAssets();
 app.MapRazorPages()
     .WithStaticAssets();
 
-app.UseFlagCommanderUI(new FlagCommanderUiOptions
+app.UseFlagCommanderUI(options =>
 {
-    RequireAuthorization = true
+    options
+        .WithAuthorizationRequired()
+        .WithRoutePrefix("flag-commander");
 });
 
 app.Run();

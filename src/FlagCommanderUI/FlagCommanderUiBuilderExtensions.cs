@@ -9,10 +9,20 @@ public static class FlagCommanderUiBuilderExtensions
     /// Register the FlagManagerUI middleware with provided options
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public static IApplicationBuilder UseFlagCommanderUI(this IApplicationBuilder app, FlagCommanderUiOptions? options = null)
+    public static IApplicationBuilder UseFlagCommanderUI(this IApplicationBuilder app,
+        Action<FlagCommanderUiOptions>? setupAction = null)
     {
-        options ??= new FlagCommanderUiOptions();
+        ArgumentNullException.ThrowIfNull(app);
         
+        var options = new FlagCommanderUiOptions();
+        setupAction?.Invoke(options);
+
+        app.UseFlagCommanderUi(options);
+        return app;
+    }
+    
+    private static IApplicationBuilder UseFlagCommanderUi(this IApplicationBuilder app, FlagCommanderUiOptions options)
+    {
         app.UseStaticFiles();
         app.UseRouting();
 
