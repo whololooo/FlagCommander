@@ -52,3 +52,12 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Editors
+.vscode/
+.idea/
+.git/
+*.DotSettings.user
+
+# macOS
+.DS_Store

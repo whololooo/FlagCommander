@@ -1,0 +1,9 @@
+@FlagCommanderRealAppTest_HostAddress = http://localhost:5023
+
+GET {{FlagCommanderRealAppTest_HostAddress}}/flag-setup/
+Accept: application/json
+
+GET {{FlagCommanderRealAppTest_HostAddress}}/flag-test/
+Accept: application/json
+
+###

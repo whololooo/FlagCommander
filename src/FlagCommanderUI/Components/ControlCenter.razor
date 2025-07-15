@@ -1,0 +1,18 @@
+﻿<div class="">
+    @if (!string.IsNullOrWhiteSpace(statusMessage))
+    {
+        <div class="alert @(statusMessageTypeClass) alert-dismissible fade show" role="alert">
+            <div class="container">
+                <span>@statusMessage</span>
+                <progress max="@HideDelay" value="@progress" class="w-100"></progress>
+            </div>
+        </div>
+    }
+
+    <button @onclick="AddNewEntry" class="btn btn-primary my-2"><i class="bi bi-plus-circle"></i></button>
+
+    @foreach (var flag in flags)
+    {
+        <FlagEntry Flag="@flag" OnUpdated="RowUpdated" OnDeleted="RowDeleted" OnDeletedUnsaved="UnsavedRowDeleted"/>
+    }
+</div>
