@@ -6,8 +6,8 @@ namespace FlagCommanderUINet6.Components;
 
 public partial class ControlCenter : ComponentBase
 {
-    [Inject] public IFlagCommander FlagCommander { get; set; }
-    [Inject] public IFlagCommanderManagement FlagCommanderManagement { get; set; }
+    [Inject] public IFlagCommander FlagCommander { get; set; } = null!;
+    [Inject] public IFlagCommanderManagement FlagCommanderManagement { get; set; } = null!;
     private List<Flag> flags = [];
     
     private string statusMessage = string.Empty;

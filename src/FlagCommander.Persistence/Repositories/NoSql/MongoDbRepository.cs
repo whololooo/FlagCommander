@@ -4,15 +4,11 @@ using MongoDB.Driver;
 
 namespace FlagCommander.Persistence.Repositories.NoSql;
 
-public class MongoDbRepository : NoSqlRepositoryBase, IRepository
+public class MongoDbRepository(string connectionString) : NoSqlRepositoryBase(connectionString), IRepository
 {
-    private MongoClient mongoClient;
-    private IMongoCollection<Flag> flagsCollection;
+    private MongoClient mongoClient = null!;
+    private IMongoCollection<Flag> flagsCollection = null!;
     private const string CollectionName = "__flag_commander_flags";
-    
-    public MongoDbRepository(string connectionString) : base(connectionString)
-    {
-    }
 
     protected override async Task Init()
     {

@@ -10,13 +10,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.36"/>
         <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.3.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Routing" />
-        <PackageReference Include="Microsoft.AspNetCore.StaticFiles" />
+        <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
     </ItemGroup>
 
     <ItemGroup>

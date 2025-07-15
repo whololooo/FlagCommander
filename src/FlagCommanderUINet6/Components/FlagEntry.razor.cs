@@ -7,9 +7,9 @@ namespace FlagCommanderUINet6.Components;
 
 public partial class FlagEntry : ComponentBase
 {
-    [Inject] private IFlagCommander FlagCommander { get; set; }
-    [Inject] private IFlagCommanderManagement FlagCommanderManagement { get; set; }
-    [Inject] private IJSRuntime JsRuntime { get; set; }
+    [Inject] private IFlagCommander FlagCommander { get; set; } = null!;
+    [Inject] private IFlagCommanderManagement FlagCommanderManagement { get; set; } = null!;
+    [Inject] private IJSRuntime JsRuntime { get; set; } = null!;
     [Parameter] public Flag Flag { get; set; }
     [Parameter] public EventCallback<(string, MessageType)> OnUpdated { get; set; }
     [Parameter] public EventCallback<(string, MessageType)> OnDeleted { get; set; }
