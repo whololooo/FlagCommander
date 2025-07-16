@@ -5,6 +5,19 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <Version>1.0.1</Version>
+        <Title>FlagCommander.Persistence</Title>
+        <Authors>Lukas Tomasy</Authors>
+        <Owners>whololooo</Owners>
+        <Description>A persistence layer for FlagCommander</Description>
+        <Copyright>Lukas Tomasy</Copyright>
+        <PackageProjectUrl>https://github.com/whololooo/FlagCommander</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/whololooo/FlagCommander</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>A/B test feature toggle flag</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,8 +29,10 @@
         <PackageReference Include="MySql.Data" Version="9.1.0" />
         <PackageReference Include="Npgsql" Version="9.0.3" />
         <PackageReference Include="StackExchange.Redis" Version="2.8.37" />
-        <PackageReference Include="Testcontainers.MsSql" Version="4.4.0" />
-        <PackageReference Include="Testcontainers.Redis" Version="4.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>

@@ -5,7 +5,20 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyVersion>0.0.1</AssemblyVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AssemblyVersion>0.0.3</AssemblyVersion>
+        <Version>0.0.3</Version>
+        <Title>FlagCommander</Title>
+        <Authors>Lukas Tomasy</Authors>
+        <Owners>whololooo</Owners>
+        <Description>A powerful and flexible feature flag solution for .NET applications</Description>
+        <Copyright>Lukas Tomasy</Copyright>
+        <PackageProjectUrl>https://github.com/whololooo/FlagCommander</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/whololooo/FlagCommander</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>A/B test feature toggle flag</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +27,11 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>

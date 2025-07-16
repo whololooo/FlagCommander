@@ -5,8 +5,20 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyVersion>0.0.1</AssemblyVersion>
         <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AssemblyVersion>0.0.3</AssemblyVersion>
+        <Version>0.0.3</Version>
+        <Title>FlagCommanderUI</Title>
+        <Authors>Lukas Tomasy</Authors>
+        <Description>A powerful and flexible feature flag solution for .NET applications with GUI</Description>
+        <Copyright>Lukas Tomasy</Copyright>
+        <PackageProjectUrl>https://github.com/whololooo/FlagCommander</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/whololooo/FlagCommander</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>A/B test feature toggle flag</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +32,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="index.html" />
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
