@@ -7,7 +7,7 @@
         <Nullable>enable</Nullable>
         <AssemblyVersion>1.0.1</AssemblyVersion>
         <Version>1.0.1</Version>
-        <Title>FlagCommander.Persitence</Title>
+        <Title>FlagCommander.Persistence</Title>
         <Authors>Lukas Tomasy</Authors>
         <Owners>whololooo</Owners>
         <Description>A persistence layer for FlagCommander</Description>
