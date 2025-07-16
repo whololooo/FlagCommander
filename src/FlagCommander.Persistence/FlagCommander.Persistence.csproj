@@ -13,10 +13,11 @@
         <Description>A persistence layer for FlagCommander</Description>
         <Copyright>Lukas Tomasy</Copyright>
         <PackageProjectUrl>https://github.com/whololooo/FlagCommander</PackageProjectUrl>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/whololooo/FlagCommander/refs/heads/main/LICENSE</PackageLicenseUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <RepositoryUrl>https://github.com/whololooo/FlagCommander</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>A/B test feature toggle flag</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,6 +29,10 @@
         <PackageReference Include="MySql.Data" Version="9.1.0" />
         <PackageReference Include="Npgsql" Version="9.0.3" />
         <PackageReference Include="StackExchange.Redis" Version="2.8.37" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>

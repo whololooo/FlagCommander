@@ -2,7 +2,7 @@
 
 public static class FlagCommanderUiServiceCollectionExtensions
 {
-    public static IServiceCollection AddFlagCommanderUi(this IServiceCollection services)
+    public static IServiceCollection AddFlagCommanderUI(this IServiceCollection services)
     {
         services.AddRazorPages();
         services.AddRazorComponents().AddInteractiveServerComponents();

@@ -20,7 +20,7 @@ builder.Services.AddFlagCommander(options =>
 {
     options.UseInMemoryRepository();
 });
-builder.Services.AddFlagCommanderUi();
+builder.Services.AddFlagCommanderUI();
 
 var app = builder.Build();
 

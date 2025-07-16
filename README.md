@@ -24,8 +24,8 @@ builder.Services.AddFlagCommander(options =>
 
 .....
     
-// Optional FlagCommanderUI for management
-builder.Services.AddFlagCommanderUi();
+// Optional FlagCommanderUI for management, requires `FlagCommanderUI` (`FlagCommanderUINet6` for .NET 6) NuGet package
+builder.Services.AddFlagCommanderUI();
 
 app.UseFlagCommanderUI(options =>
 {

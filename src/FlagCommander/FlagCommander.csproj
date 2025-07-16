@@ -5,9 +5,9 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyVersion>0.0.2</AssemblyVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.0.2</Version>
+        <AssemblyVersion>0.0.3</AssemblyVersion>
+        <Version>0.0.3</Version>
         <Title>FlagCommander</Title>
         <Authors>Lukas Tomasy</Authors>
         <Owners>whololooo</Owners>
@@ -17,7 +17,8 @@
         <RepositoryUrl>https://github.com/whololooo/FlagCommander</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Feature flag, flag</PackageTags>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/whololooo/FlagCommander/refs/heads/main/LICENSE</PackageLicenseUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,6 +31,7 @@
     
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>
