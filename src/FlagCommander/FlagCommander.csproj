@@ -16,7 +16,7 @@
         <PackageProjectUrl>https://github.com/whololooo/FlagCommander</PackageProjectUrl>
         <RepositoryUrl>https://github.com/whololooo/FlagCommander</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>Feature flag, flag</PackageTags>
+        <PackageTags>A/B test feature toggle flag</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
