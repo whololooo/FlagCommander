@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>FlagCommanderUI</id>
-    <version>0.0.3</version>
+    <version>1.0.1</version>
     <title>FlagCommanderUI</title>
     <authors>Lukas Tomasy</authors>
     <license type="expression">MIT</license>
@@ -14,7 +14,7 @@
     <tags>A/B test feature toggle flag</tags>
     <dependencies>
       <group targetFramework="net8.0">
-        <dependency id="FlagCommander" version="0.0.3" />
+        <dependency id="FlagCommander" version="1.0.1" />
         <dependency id="Microsoft.AspNetCore.Hosting" version="2.3.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.Mvc.TagHelpers" version="2.3.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.Razor" version="2.3.0" exclude="Build,Analyzers" />
@@ -23,7 +23,7 @@
         <dependency id="Microsoft.Extensions.Options" version="8.0.2" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="net9.0">
-        <dependency id="FlagCommander" version="0.0.3" />
+        <dependency id="FlagCommander" version="1.0.1" />
         <dependency id="Microsoft.AspNetCore.Hosting" version="2.3.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.Mvc.TagHelpers" version="2.3.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.Razor" version="2.3.0" exclude="Build,Analyzers" />

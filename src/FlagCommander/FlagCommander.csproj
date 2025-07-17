@@ -6,8 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <AssemblyVersion>0.0.3</AssemblyVersion>
-        <Version>0.0.3</Version>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <Version>1.0.1</Version>
         <Title>FlagCommander</Title>
         <Authors>Lukas Tomasy</Authors>
         <Owners>whololooo</Owners>
@@ -33,5 +33,9 @@
         <None Include="..\..\README.md" Pack="true" PackagePath="\" />
         <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="dotnet run --project ../VersionManager ../FlagCommander" />
+    </Target>
 
 </Project>

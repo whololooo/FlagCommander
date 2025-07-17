@@ -6,8 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-        <AssemblyVersion>0.0.3</AssemblyVersion>
-        <Version>0.0.3</Version>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <Version>1.0.1</Version>
         <Title>FlagCommanderUINet6</Title>
         <Authors>Lukas Tomasy</Authors>
         <Description>A powerful and flexible feature flag solution for .NET applications with GUI (for .NET 6)</Description>
@@ -38,5 +38,9 @@
     <ItemGroup>
       <ProjectReference Include="..\FlagCommander\FlagCommander.csproj" />
     </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="dotnet run --project ../VersionManager ../FlagCommanderUINet6" />
+    </Target>
 
 </Project>

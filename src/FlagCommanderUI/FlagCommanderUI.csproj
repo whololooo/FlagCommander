@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
@@ -7,8 +7,8 @@
         <Nullable>enable</Nullable>
         <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <AssemblyVersion>0.0.3</AssemblyVersion>
-        <Version>0.0.3</Version>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <Version>1.0.1</Version>
         <Title>FlagCommanderUI</Title>
         <Authors>Lukas Tomasy</Authors>
         <Description>A powerful and flexible feature flag solution for .NET applications with GUI</Description>
@@ -39,5 +39,9 @@
     <ItemGroup>
       <ProjectReference Include="..\FlagCommander\FlagCommander.csproj" />
     </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="dotnet run --project ../VersionManager ../FlagCommanderUI" />
+    </Target>
 
 </Project>
