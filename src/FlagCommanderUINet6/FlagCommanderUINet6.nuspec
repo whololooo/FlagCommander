@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FlagCommanderUINet6</id>
+    <version>0.0.3</version>
+    <title>FlagCommanderUINet6</title>
+    <authors>Lukas Tomasy</authors>
+    <license type="expression">MIT</license>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/whololooo/FlagCommander</projectUrl>
+    <repository type="git" url="https://github.com/whololooo/FlagCommander.git" />
+    <description>A powerful and flexible feature flag solution for .NET applications with GUI (for .NET 6)</description>
+    <copyright>Lukas Tomasy</copyright>
+    <tags>A/B test feature toggle flag</tags>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="FlagCommander" version="0.0.3" />
+        <dependency id="Microsoft.AspNetCore.Hosting" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.TagHelpers" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Razor" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Routing" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.StaticFiles" version="2.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Options" version="8.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="..\..\README.md" target="" />
+    <file src="bin\Release\net6.0\FlagCommanderUINet6.dll" target="lib\net6.0" />
+    <file src="bin\Release\net6.0\FlagCommanderUINet6.pdb" target="lib\net6.0" />
+  </files>
+</package>

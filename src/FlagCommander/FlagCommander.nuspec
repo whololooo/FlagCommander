@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <version>1.0.0</version>
+        <id>FlagCommander</id>
+        <title>FlagCommander</title>
+        <authors>whololooo</authors>
+        <description>A powerful and flexible feature flag solution for .NET applications</description>
+        <copyright>Lukas Tomasy</copyright>
+        <readme>README.md</readme>
+        <license type="expression">MIT</license>
+        <projectUrl>https://github.com/whololooo/FlagCommander</projectUrl>
+        <repository type="git" url="https://github.com/whololooo/FlagCommander.git" />
+        <tags>A/B test feature toggle flag</tags>
+        <dependencies>
+            <group targetFramework="net6.0">
+                <dependency id="Microsoft.Extensions.Options" version="8.0.2" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Data.Sqlite" version="9.0.4" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Data.SqlClient" version="5.2.3" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Bson" version="3.4.0" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Driver" version="3.4.0" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Driver.Core" version="2.30.0" exclude="Build,Analyzers" />
+                <dependency id="MySql.Data" version="9.1.0" exclude="Build,Analyzers" />
+                <dependency id="Npgsql" version="9.0.3" exclude="Build,Analyzers" />
+                <dependency id="StackExchange.Redis" version="2.8.37" exclude="Build,Analyzers" />
+            </group>
+            <group targetFramework="net8.0">
+                <dependency id="Microsoft.Extensions.Options" version="8.0.2" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Data.Sqlite" version="9.0.4" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Data.SqlClient" version="5.2.3" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Bson" version="3.4.0" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Driver" version="3.4.0" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Driver.Core" version="2.30.0" exclude="Build,Analyzers" />
+                <dependency id="MySql.Data" version="9.1.0" exclude="Build,Analyzers" />
+                <dependency id="Npgsql" version="9.0.3" exclude="Build,Analyzers" />
+                <dependency id="StackExchange.Redis" version="2.8.37" exclude="Build,Analyzers" />
+            </group>
+            <group targetFramework="net9.0">
+                <dependency id="Microsoft.Extensions.Options" version="8.0.2" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Data.Sqlite" version="9.0.4" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Data.SqlClient" version="5.2.3" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Bson" version="3.4.0" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Driver" version="3.4.0" exclude="Build,Analyzers" />
+                <dependency id="MongoDB.Driver.Core" version="2.30.0" exclude="Build,Analyzers" />
+                <dependency id="MySql.Data" version="9.1.0" exclude="Build,Analyzers" />
+                <dependency id="Npgsql" version="9.0.3" exclude="Build,Analyzers" />
+                <dependency id="StackExchange.Redis" version="2.8.37" exclude="Build,Analyzers" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\..\README.md" target="" />
+        <file src="bin\Release\net6.0\*.dll" target="lib\net6.0" />
+        <file src="bin\Release\net6.0\*.pdb" target="lib\net6.0" />
+        <file src="bin\Release\net8.0\*.dll" target="lib\net8.0" />
+        <file src="bin\Release\net8.0\*.pdb" target="lib\net8.0" />
+        <file src="bin\Release\net9.0\*.dll" target="lib\net9.0" />
+        <file src="bin\Release\net9.0\*.pdb" target="lib\net9.0" />
+    </files>
+</package>
