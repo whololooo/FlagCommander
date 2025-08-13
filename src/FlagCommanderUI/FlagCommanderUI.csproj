@@ -40,7 +40,7 @@
       <ProjectReference Include="..\FlagCommander\FlagCommander.csproj" />
     </ItemGroup>
 
-    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Release'">
         <Exec Command="dotnet run --project ../VersionManager ../FlagCommanderUI" />
     </Target>
 

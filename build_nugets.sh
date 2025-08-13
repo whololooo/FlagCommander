@@ -1,4 +1,4 @@
-﻿#!/bin/zsh
+﻿#!/bin/bash
 
 # This script builds the NuGet packages for the project.
 root_dir=$(pwd)

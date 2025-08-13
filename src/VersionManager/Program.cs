@@ -13,14 +13,12 @@ public class Program
     }
 
     private string SourceDirectory { get; } = Directory.GetCurrentDirectory();
-    //private string Version => File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../../", "../../version")).Trim();
     private string Version => File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "../../version")).Trim();
-    
-    static async Task Main(string[] args)
+
+    private static async Task Main(string[] args)
     {
         if (args.Length == 0)
         {
-            //args = ["../../../../FlagCommanderUI"];
             Console.WriteLine("Usage: VersionManager <sourceDirectory>");
             return;
         }
