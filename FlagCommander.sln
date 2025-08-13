@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagCommanderUINet6", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagCommanderRazorWabAppTest", "tests\FlagCommanderRazorWabAppTest\FlagCommanderRazorWabAppTest.csproj", "{2B024C36-8A92-4E31-BB24-DF2E5C93D26C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionManager", "src\VersionManager\VersionManager.csproj", "{52DD36BD-CC4E-481E-825D-053D212DE2C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{2B024C36-8A92-4E31-BB24-DF2E5C93D26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B024C36-8A92-4E31-BB24-DF2E5C93D26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B024C36-8A92-4E31-BB24-DF2E5C93D26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52DD36BD-CC4E-481E-825D-053D212DE2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52DD36BD-CC4E-481E-825D-053D212DE2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52DD36BD-CC4E-481E-825D-053D212DE2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52DD36BD-CC4E-481E-825D-053D212DE2C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6C699E2F-6B3E-4D02-9A90-48317B06F7EA} = {CE5B1913-997C-4D81-AC26-764649F81A0E}
