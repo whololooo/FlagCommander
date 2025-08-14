@@ -4,7 +4,7 @@ on: [workflow_dispatch]
 jobs:
   build-and-push-nugets:
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    #if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
     steps:        
       - name: Checkout code
         uses: actions/checkout@v5
