@@ -16,6 +16,9 @@ jobs:
             6.0.428
             8.0.413
             9.0.304
+      
+      - name: Mono setup
+        run: sudo apt install mono-devel
 
       - name: Build
         run: |
