@@ -5,7 +5,6 @@ jobs:
   build-and-push-nugets:
     runs-on: ubuntu-22.04
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
-    #if: github.ref == 'refs/heads/main'
     steps:        
       - name: Checkout code
         uses: actions/checkout@v5
