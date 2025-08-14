@@ -16,7 +16,8 @@ jobs:
             6.0.428
             8.0.413
             9.0.304
-      
+        
+        # Not required for ubuntu-22.04, it is preinstalled. Later version of ubuntu may not have it preinstalled.
 #      - name: Mono setup
 #        run: sudo apt install mono-devel
 
@@ -29,12 +30,13 @@ jobs:
           dotnet build src/FlagCommanderUI/FlagCommanderUI.csproj -c Release -f net9.0
           dotnet build src/FlagCommanderUINet6/FlagCommanderUINet6.csproj -c Release -f net6.0
 
-      - name: Build and Push NuGet packages
+      - name: Setup NuGet
         uses: nuget/setup-nuget@v2
         with:
           nuget-api-key: ${{ secrets.NUGET_API_KEY }}
           nuget-version: 'latest'
-      - run: |
+      - name: Build and Push NuGet packages
+        run: |
           mkdir artifacts
           cd src/FlagCommander
           nuget pack FlagCommander.nuspec -OutputFileNamesWithoutVersion -OutputDirectory ../../artifacts/
