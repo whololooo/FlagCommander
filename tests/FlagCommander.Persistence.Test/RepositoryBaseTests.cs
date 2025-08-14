@@ -235,7 +235,7 @@ public abstract class RepositoryBaseTests
         // Assert
         Assert.NotNull(result);
         Assert.Contains("NewActor", result!.ActorIds);
-        Assert.Single(result!.ActorIds.Where(actorId => actorId == "NewActor"));
+        Assert.Single(result.ActorIds, actorId => actorId == "NewActor");
     }
     
     [Fact]
