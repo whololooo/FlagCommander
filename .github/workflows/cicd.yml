@@ -1,4 +1,4 @@
-name: cicd.yml
+name: CI/CD Pipeline
 on: [push, pull_request]
 
 jobs:
