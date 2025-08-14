@@ -1,0 +1,42 @@
+name: CI/CD Pipeline
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Dotnet setup
+        uses: xt0rted/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            6.0.428
+            8.0.413
+            9.0.304
+      - name: Build
+        run: |
+          dotnet build
+          dotnet build src/FlagCommander/FlagCommander.csproj -c Release -f net6.0
+          dotnet build src/FlagCommander/FlagCommander.csproj -c Release -f net8.0
+          dotnet build src/FlagCommander/FlagCommander.csproj -c Release -f net9.0
+          dotnet build src/FlagCommanderUI/FlagCommanderUI.csproj -c Release -f net8.0
+          dotnet build src/FlagCommanderUI/FlagCommanderUI.csproj -c Release -f net9.0
+          dotnet build src/FlagCommanderUINet6/FlagCommanderUINet6.csproj -c Release -f net6.0
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Dotnet setup
+        uses: xt0rted/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            6.0.428
+            8.0.413
+            9.0.304
+      - name: Run tests
+        run: |
+          dotnet test tests/FlagCommander.Tests/FlagCommander.Tests.csproj
+          dotnet test tests/FlagCommander.Persistence.Test/FlagCommander.Persistence.Test.csproj

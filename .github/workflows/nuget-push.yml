@@ -1,0 +1,53 @@
+name: Nuget build and push
+on: workflow_dispatch
+
+jobs:
+  build-and-push-nugets:
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    steps:        
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Dotnet setup
+        uses: xt0rted/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            6.0.428
+            8.0.413
+            9.0.304
+        
+        # Not required for ubuntu-22.04, it is preinstalled. Later version of ubuntu may not have it preinstalled.
+#      - name: Mono setup
+#        run: sudo apt install mono-devel
+
+      - name: Build
+        run: |
+          dotnet build src/FlagCommander/FlagCommander.csproj -c Release -f net6.0
+          dotnet build src/FlagCommander/FlagCommander.csproj -c Release -f net8.0
+          dotnet build src/FlagCommander/FlagCommander.csproj -c Release -f net9.0
+          dotnet build src/FlagCommanderUI/FlagCommanderUI.csproj -c Release -f net8.0
+          dotnet build src/FlagCommanderUI/FlagCommanderUI.csproj -c Release -f net9.0
+          dotnet build src/FlagCommanderUINet6/FlagCommanderUINet6.csproj -c Release -f net6.0
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2
+        with:
+          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+          nuget-version: 'latest'
+      - name: Build and Push NuGet packages
+        run: |
+          mkdir artifacts
+          cd src/FlagCommander
+          nuget pack FlagCommander.nuspec -OutputFileNamesWithoutVersion -OutputDirectory ../../artifacts/
+          
+          cd ../FlagCommanderUI
+          nuget pack FlagCommanderUI.nuspec -OutputFileNamesWithoutVersion -OutputDirectory ../../artifacts/
+ 
+          cd ../FlagCommanderUINet6
+          nuget pack FlagCommanderUINet6.nuspec -OutputFileNamesWithoutVersion -OutputDirectory ../../artifacts/
+          cd ../..
+          
+          dotnet nuget push artifacts/FlagCommander.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push artifacts/FlagCommanderUI.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push artifacts/FlagCommanderUINet6.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
