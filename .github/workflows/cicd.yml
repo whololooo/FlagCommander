@@ -1,0 +1,21 @@
+name: cicd.yml
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Dotnet setup
+        uses: xt0rted/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            6.0.428
+            8.0.413
+            9.0.304
+      - name: list data
+        run: |
+          dotnet --list-sdks
+          dotnet --list-runtimes
+          ls -la
