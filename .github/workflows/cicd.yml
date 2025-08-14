@@ -39,4 +39,4 @@ jobs:
       - name: Run tests
         run: |
           dotnet test tests/FlagCommander.Tests/FlagCommander.Tests.csproj
-          dotnet test tests/FlagCommander.Persistence.Tests/FlagCommander.Persistence.Tests.csproj
+          dotnet test tests/FlagCommander.Persistence.Test/FlagCommander.Persistence.Test.csproj
